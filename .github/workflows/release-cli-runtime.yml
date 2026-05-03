@@ -49,7 +49,6 @@ jobs:
           mkdir -p release-assets
           cp target/miku-readfile.jar "release-assets/miku-readfile-${VERSION}.jar"
           cp target/miku-readfile-sources.jar "release-assets/miku-readfile-sources-${VERSION}.jar"
-          cp target/miku-readfile-${POM_VERSION}-dist.zip "release-assets/miku-readfile-${VERSION}-dist.zip"
 
       - name: Set up Java 8 for runtime verification
         uses: actions/setup-java@v4

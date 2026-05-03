@@ -27,7 +27,8 @@ class DocumentationSyncTest {
         assertTrue(readme.contains("target/miku-readfile.jar"));
         assertTrue(readme.contains("node scripts/parity-check.mjs"));
         assertTrue(readme.contains(".github/workflows/release-cli-runtime.yml"));
-        assertTrue(readme.contains("miku-readfile-<version>-dist.zip"));
+        assertTrue(readme.contains("miku-readfile-<version>.jar"));
+        assertTrue(readme.contains("miku-readfile-sources-<version>.jar"));
 
         assertTrue(spec.contains("java -jar target/miku-readfile.jar < request.json > result.json"));
         assertTrue(spec.contains("Request Validation"));
