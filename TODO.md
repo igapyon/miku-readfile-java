@@ -22,7 +22,7 @@
   - Keep `README.md`, CLI help, and tests aligned.
 - Expand README with more examples.
 - Add GitHub release workflow for CLI runtime assets.
-  - Runtime jar, sources jar, and distribution zip are attached to release tags.
+  - Runtime jar and sources jar are attached to release tags.
   - Release tag versions must match `pom.xml` version or use a dot-suffix.
 
 ## Next

@@ -110,7 +110,6 @@ Release assets:
 
 - `miku-readfile-<version>.jar`
 - `miku-readfile-sources-<version>.jar`
-- `miku-readfile-<version>-dist.zip`
 
 ## Development Documents
 

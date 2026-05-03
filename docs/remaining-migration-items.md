@@ -28,8 +28,7 @@ Initial Java runtime skeleton and MVP behavior are implemented.
 - parity script refactored into case definition, execution, output writing, and
   normalization units
 - upstream documentation synchronization notes under docs/upstream-doc-sync.md
-- GitHub release workflow for CLI runtime jar, sources jar, and distribution
-  zip assets
+- GitHub release workflow for CLI runtime jar and sources jar assets
 - core runtime responsibilities split into Root, FileReader, and
   FileResultFactory to improve upstream file traceability
 - validation responsibilities split into ValidationCommon, EncodingValidator,
