@@ -23,7 +23,7 @@ public class RangeText {
         result.eof = lineCount < requestedLineCount;
         StringBuilder text = new StringBuilder();
         for (int index = startIndex; index < startIndex + lineCount; index++) {
-            text.append(TextShape.normalizeLineEndings(shape.lines.get(index)));
+            text.append(LineEndings.normalizeLineEndings(shape.lines.get(index)));
             if (shape.lineHadEnding.get(index).booleanValue()) {
                 text.append('\n');
             }

@@ -1,0 +1,27 @@
+{
+  "name": "validation-parent-path",
+  "intent": "rejects parent path segments during validation",
+  "expected": {
+    "status": 1,
+    "stdout": {
+      "version": 1,
+      "ok": false,
+      "files": [],
+      "summary": {
+        "requestedFiles": 0,
+        "filesRead": 0,
+        "filesSkipped": 0,
+        "diagnostics": 1
+      },
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "validation_error",
+          "message": "file path must not contain .. path segments",
+          "path": "files.0"
+        }
+      ]
+    },
+    "stderr": ""
+  }
+}

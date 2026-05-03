@@ -5,6 +5,7 @@ import java.util.List;
 import jp.igapyon.mikureadfile.model.Diagnostic;
 import jp.igapyon.mikureadfile.model.FileResult;
 import jp.igapyon.mikureadfile.model.MikuReadfileResult;
+import jp.igapyon.mikureadfile.model.Summary;
 
 public final class ResultFactory {
     private ResultFactory() {
@@ -12,12 +13,10 @@ public final class ResultFactory {
 
     public static MikuReadfileResult validationFailure(String code, String message, String path) {
         MikuReadfileResult result = new MikuReadfileResult();
-        Diagnostic diagnostic = Diagnostic.error(code, message);
+        Diagnostic diagnostic = Diagnostics.error(code, message);
         diagnostic.path = path;
         result.diagnostics.add(diagnostic);
-        result.summary.requestedFiles = 0;
-        result.summary.filesRead = 0;
-        result.summary.filesSkipped = 0;
+        result.summary = createSummary(0);
         result.summary.diagnostics = 1;
         result.ok = false;
         return result;
@@ -31,7 +30,7 @@ public final class ResultFactory {
         MikuReadfileResult result = new MikuReadfileResult();
         result.files.addAll(files);
         result.diagnostics.addAll(diagnostics);
-        result.summary.requestedFiles = requestedFiles;
+        result.summary = createSummary(requestedFiles);
         result.summary.filesRead = files.size();
         result.summary.filesSkipped = Math.max(0, requestedFiles - files.size());
         result.summary.diagnostics = diagnostics.size();
@@ -44,5 +43,14 @@ public final class ResultFactory {
         }
         result.ok = allowOk && result.summary.filesSkipped == 0 && !hasError;
         return result;
+    }
+
+    public static Summary createSummary(int requestedFiles) {
+        Summary summary = new Summary();
+        summary.requestedFiles = requestedFiles;
+        summary.filesRead = 0;
+        summary.filesSkipped = 0;
+        summary.diagnostics = 0;
+        return summary;
     }
 }

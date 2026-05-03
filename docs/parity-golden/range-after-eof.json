@@ -1,0 +1,38 @@
+{
+  "name": "range-after-eof",
+  "intent": "returns empty range text and eof metadata when startLine is after EOF",
+  "expected": {
+    "status": 0,
+    "stdout": {
+      "version": 1,
+      "ok": true,
+      "files": [
+        {
+          "file": "notes-crlf.txt",
+          "encoding": "utf-8",
+          "bom": null,
+          "lineEnding": "crlf",
+          "finalNewline": true,
+          "bytes": 9,
+          "lines": 3,
+          "modifiedTime": "<modifiedTime>",
+          "range": {
+            "startLine": 9,
+            "lineCount": 0,
+            "endLine": null,
+            "eof": true
+          },
+          "text": ""
+        }
+      ],
+      "summary": {
+        "requestedFiles": 1,
+        "filesRead": 1,
+        "filesSkipped": 0,
+        "diagnostics": 0
+      },
+      "diagnostics": []
+    },
+    "stderr": ""
+  }
+}

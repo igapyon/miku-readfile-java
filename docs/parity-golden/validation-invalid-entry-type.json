@@ -1,0 +1,27 @@
+{
+  "name": "validation-invalid-entry-type",
+  "intent": "rejects invalid file entry types",
+  "expected": {
+    "status": 1,
+    "stdout": {
+      "version": 1,
+      "ok": false,
+      "files": [],
+      "summary": {
+        "requestedFiles": 0,
+        "filesRead": 0,
+        "filesSkipped": 0,
+        "diagnostics": 1
+      },
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "validation_error",
+          "message": "file entry must be a string or object",
+          "path": "files.0"
+        }
+      ]
+    },
+    "stderr": ""
+  }
+}

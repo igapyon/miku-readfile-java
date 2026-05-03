@@ -1,0 +1,55 @@
+{
+  "name": "duplicate-range-requests",
+  "intent": "does not deduplicate duplicate file requests",
+  "expected": {
+    "status": 0,
+    "stdout": {
+      "version": 1,
+      "ok": true,
+      "files": [
+        {
+          "file": "same.txt",
+          "encoding": "utf-8",
+          "bom": null,
+          "lineEnding": "lf",
+          "finalNewline": true,
+          "bytes": 8,
+          "lines": 2,
+          "modifiedTime": "<modifiedTime>",
+          "range": {
+            "startLine": 1,
+            "lineCount": 1,
+            "endLine": 1,
+            "eof": false
+          },
+          "text": "one\n"
+        },
+        {
+          "file": "same.txt",
+          "encoding": "utf-8",
+          "bom": null,
+          "lineEnding": "lf",
+          "finalNewline": true,
+          "bytes": 8,
+          "lines": 2,
+          "modifiedTime": "<modifiedTime>",
+          "range": {
+            "startLine": 2,
+            "lineCount": 1,
+            "endLine": 2,
+            "eof": false
+          },
+          "text": "two\n"
+        }
+      ],
+      "summary": {
+        "requestedFiles": 2,
+        "filesRead": 2,
+        "filesSkipped": 0,
+        "diagnostics": 0
+      },
+      "diagnostics": []
+    },
+    "stderr": ""
+  }
+}

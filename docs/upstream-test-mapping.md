@@ -47,3 +47,44 @@ fixtures:
 focused regression:
   mvn test -Dtest=MikuReadfileCliTest
 ```
+
+```text
+upstream test / intent:
+  upstream CLI JSON contract compatibility
+  duplicate requests, validation errors, root errors, file limits, total byte
+  limits, per-file encoding override, range EOF behavior, and range output
+  without artificial trailing newline
+  symlink, absolute path, parent path, range after EOF, and filesystem-root
+  parity cases
+  dotfile extension matching parity
+  documentation synchronization around README, CLI spec, parity policy, help,
+  and distribution contents
+
+java tests:
+  jp.igapyon.mikureadfile.docs.DocumentationSyncTest
+  scripts/parity-check.mjs
+
+fixtures:
+  dynamically generated files under workplace/parity-miku-readfile
+  repository documents
+
+focused regression:
+  mvn test -Dtest=DocumentationSyncTest
+  node scripts/parity-check.mjs
+```
+
+```text
+upstream test / intent:
+  packaged runtime jar behavior for `--version`, `--help`, normal stdin JSON,
+  expected failure JSON, malformed stdin, and invalid CLI usage
+
+java tests:
+  scripts/smoke-jar.mjs
+
+fixtures:
+  dynamically generated files under workplace/smoke-miku-readfile
+
+focused regression:
+  mvn package
+  node scripts/smoke-jar.mjs
+```

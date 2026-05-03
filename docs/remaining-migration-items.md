@@ -16,6 +16,24 @@ Initial Java runtime skeleton and MVP behavior are implemented.
 - CLI `--help`, `-h`, `--version`, stdin JSON, stdout JSON, and exit codes
 - upstream class mapping
 - upstream test mapping
+- initial normalized JSON parity smoke
+- CLI specification synchronization with upstream-level contract sections
+- jar-level smoke verification for stdout, stderr, and exit code
+- expanded normalized JSON parity smoke covering duplicate, validation, root,
+  limit, and range edge cases
+- normalized JSON parity smoke expanded to 27 cases covering symlink, path
+  validation, filesystem root, range-after-EOF behavior, and Node extname edge
+  cases
+- checked-in normalized parity golden files under docs/parity-golden
+- parity script refactored into case definition, execution, output writing, and
+  normalization units
+- core runtime responsibilities split into Root, FileReader, and
+  FileResultFactory to improve upstream file traceability
+- validation responsibilities split into ValidationCommon, EncodingValidator,
+  FileValidator, and LimitsValidator
+- text shape responsibilities split into LineEndings and LogicalLines
+- diagnostic construction split into Diagnostics while Diagnostic remains the
+  JSON model
 
 ## Maintenance Check
 
@@ -29,6 +47,8 @@ Latest passing result:
 2026-05-03
   mvn test
   mvn clean package
+  node scripts/smoke-jar.mjs
+  node scripts/parity-check.mjs
   java -jar target/miku-readfile.jar --version
   java -jar target/miku-readfile.jar --help
   README.md stdin JSON smoke
@@ -36,15 +56,16 @@ Latest passing result:
 
 ## Pending
 
-- Add selected byte-level JSON parity fixtures against upstream Node CLI.
-- Decide whether package version should become `0.5.0` for release.
-- Expand README with more examples after first package verification.
+- Continue synchronizing README, CLI help, and CLI spec when upstream changes.
 
 ## Focused Regression List
 
 ```bash
 mvn test -Dtest=MikuReadfileTest
 mvn test -Dtest=MikuReadfileCliTest
+mvn test -Dtest=DocumentationSyncTest
 mvn test
 mvn package
+node scripts/smoke-jar.mjs
+node scripts/parity-check.mjs
 ```

@@ -1,0 +1,27 @@
+{
+  "name": "root-is-file",
+  "intent": "returns root_not_accessible when root is not a directory",
+  "expected": {
+    "status": 1,
+    "stdout": {
+      "version": 1,
+      "ok": false,
+      "files": [],
+      "summary": {
+        "requestedFiles": 1,
+        "filesRead": 0,
+        "filesSkipped": 1,
+        "diagnostics": 1
+      },
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "root_not_accessible",
+          "message": "root is not a directory",
+          "path": "<repoRoot>/workplace/parity-miku-readfile/fixture/README.md"
+        }
+      ]
+    },
+    "stderr": ""
+  }
+}

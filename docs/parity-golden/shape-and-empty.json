@@ -1,0 +1,81 @@
+{
+  "name": "shape-and-empty",
+  "intent": "handles BOM, empty files, final newline, and mixed / CR line endings",
+  "expected": {
+    "status": 0,
+    "stdout": {
+      "version": 1,
+      "ok": true,
+      "files": [
+        {
+          "file": "bom.txt",
+          "encoding": "utf-8",
+          "bom": "utf-8",
+          "lineEnding": "none",
+          "finalNewline": false,
+          "bytes": 8,
+          "lines": 1,
+          "modifiedTime": "<modifiedTime>",
+          "range": null,
+          "text": "hello"
+        },
+        {
+          "file": "empty.txt",
+          "encoding": "utf-8",
+          "bom": null,
+          "lineEnding": "none",
+          "finalNewline": false,
+          "bytes": 0,
+          "lines": 0,
+          "modifiedTime": "<modifiedTime>",
+          "range": null,
+          "text": ""
+        },
+        {
+          "file": "mixed.txt",
+          "encoding": "utf-8",
+          "bom": null,
+          "lineEnding": "mixed",
+          "finalNewline": false,
+          "bytes": 8,
+          "lines": 4,
+          "modifiedTime": "<modifiedTime>",
+          "range": null,
+          "text": "a\nb\nc\nd"
+        },
+        {
+          "file": "classic.txt",
+          "encoding": "utf-8",
+          "bom": null,
+          "lineEnding": "cr",
+          "finalNewline": true,
+          "bytes": 4,
+          "lines": 2,
+          "modifiedTime": "<modifiedTime>",
+          "range": null,
+          "text": "a\nb\n"
+        },
+        {
+          "file": "nofinal.txt",
+          "encoding": "utf-8",
+          "bom": null,
+          "lineEnding": "none",
+          "finalNewline": false,
+          "bytes": 8,
+          "lines": 1,
+          "modifiedTime": "<modifiedTime>",
+          "range": null,
+          "text": "no final"
+        }
+      ],
+      "summary": {
+        "requestedFiles": 5,
+        "filesRead": 5,
+        "filesSkipped": 0,
+        "diagnostics": 0
+      },
+      "diagnostics": []
+    },
+    "stderr": ""
+  }
+}

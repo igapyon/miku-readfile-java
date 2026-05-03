@@ -1,0 +1,41 @@
+{
+  "name": "partial-failure-keeps-read-file",
+  "intent": "returns read files plus ok false for partial failure",
+  "expected": {
+    "status": 1,
+    "stdout": {
+      "version": 1,
+      "ok": false,
+      "files": [
+        {
+          "file": "README.md",
+          "encoding": "utf-8",
+          "bom": null,
+          "lineEnding": "lf",
+          "finalNewline": true,
+          "bytes": 12,
+          "lines": 2,
+          "modifiedTime": "<modifiedTime>",
+          "range": null,
+          "text": "hello\nworld\n"
+        }
+      ],
+      "summary": {
+        "requestedFiles": 2,
+        "filesRead": 1,
+        "filesSkipped": 1,
+        "diagnostics": 1
+      },
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "file_not_readable",
+          "message": "file could not be read",
+          "file": "missing.txt",
+          "skipped": true
+        }
+      ]
+    },
+    "stderr": ""
+  }
+}

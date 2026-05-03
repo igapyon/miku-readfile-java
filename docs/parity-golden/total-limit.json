@@ -1,0 +1,30 @@
+{
+  "name": "total-limit",
+  "intent": "enforces maxTotalBytes without returning a partial oversized result",
+  "expected": {
+    "status": 1,
+    "stdout": {
+      "version": 1,
+      "ok": false,
+      "files": [],
+      "summary": {
+        "requestedFiles": 2,
+        "filesRead": 0,
+        "filesSkipped": 2,
+        "diagnostics": 1
+      },
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "max_total_bytes_exceeded",
+          "message": "total filesystem bytes exceeded maxTotalBytes",
+          "skipped": true,
+          "details": {
+            "maxTotalBytes": 5
+          }
+        }
+      ]
+    },
+    "stderr": ""
+  }
+}

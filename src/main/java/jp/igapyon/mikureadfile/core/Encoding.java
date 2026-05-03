@@ -64,6 +64,9 @@ public final class Encoding {
         int slash = path.lastIndexOf('/');
         String base = slash >= 0 ? path.substring(slash + 1) : path;
         int dot = base.lastIndexOf('.');
-        return dot >= 0 ? base.substring(dot) : "";
+        if (dot <= 0) {
+            return "";
+        }
+        return base.substring(dot);
     }
 }

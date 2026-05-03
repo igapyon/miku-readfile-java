@@ -1,0 +1,28 @@
+{
+  "name": "symlink-skipped",
+  "intent": "skips symlinked files",
+  "expected": {
+    "status": 1,
+    "stdout": {
+      "version": 1,
+      "ok": false,
+      "files": [],
+      "summary": {
+        "requestedFiles": 1,
+        "filesRead": 0,
+        "filesSkipped": 1,
+        "diagnostics": 1
+      },
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "symlink_skipped",
+          "message": "symlink was skipped",
+          "file": "link.txt",
+          "skipped": true
+        }
+      ]
+    },
+    "stderr": ""
+  }
+}

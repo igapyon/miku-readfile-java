@@ -1,0 +1,35 @@
+{
+  "name": "duplicate-missing-diagnostics",
+  "intent": "does not deduplicate duplicate diagnostics",
+  "expected": {
+    "status": 1,
+    "stdout": {
+      "version": 1,
+      "ok": false,
+      "files": [],
+      "summary": {
+        "requestedFiles": 2,
+        "filesRead": 0,
+        "filesSkipped": 2,
+        "diagnostics": 2
+      },
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "file_not_readable",
+          "message": "file could not be read",
+          "file": "missing.txt",
+          "skipped": true
+        },
+        {
+          "severity": "error",
+          "code": "file_not_readable",
+          "message": "file could not be read",
+          "file": "missing.txt",
+          "skipped": true
+        }
+      ]
+    },
+    "stderr": ""
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "range-no-artificial-trailing-newline",
+  "intent": "does not add artificial trailing newline to range output",
+  "expected": {
+    "status": 0,
+    "stdout": {
+      "version": 1,
+      "ok": true,
+      "files": [
+        {
+          "file": "plain.txt",
+          "encoding": "utf-8",
+          "bom": null,
+          "lineEnding": "lf",
+          "finalNewline": false,
+          "bytes": 5,
+          "lines": 3,
+          "modifiedTime": "<modifiedTime>",
+          "range": {
+            "startLine": 3,
+            "lineCount": 1,
+            "endLine": 3,
+            "eof": false
+          },
+          "text": "c"
+        }
+      ],
+      "summary": {
+        "requestedFiles": 1,
+        "filesRead": 1,
+        "filesSkipped": 0,
+        "diagnostics": 0
+      },
+      "diagnostics": []
+    },
+    "stderr": ""
+  }
+}

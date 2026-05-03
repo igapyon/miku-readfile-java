@@ -29,5 +29,9 @@
       <source>docs/miku-readfile-cli-spec.md</source>
       <outputDirectory>/docs</outputDirectory>
     </file>
+    <file>
+      <source>docs/cli-json-parity.md</source>
+      <outputDirectory>/docs</outputDirectory>
+    </file>
   </files>
 </assembly>

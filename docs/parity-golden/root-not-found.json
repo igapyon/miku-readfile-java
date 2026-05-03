@@ -1,0 +1,27 @@
+{
+  "name": "root-not-found",
+  "intent": "returns root_not_found for missing root",
+  "expected": {
+    "status": 1,
+    "stdout": {
+      "version": 1,
+      "ok": false,
+      "files": [],
+      "summary": {
+        "requestedFiles": 1,
+        "filesRead": 0,
+        "filesSkipped": 1,
+        "diagnostics": 1
+      },
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "root_not_found",
+          "message": "root does not exist",
+          "path": "<repoRoot>/workplace/parity-miku-readfile/missing-root"
+        }
+      ]
+    },
+    "stderr": ""
+  }
+}
