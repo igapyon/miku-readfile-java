@@ -44,10 +44,6 @@ notes:
 ```text
 upstream file:
   workplace/upstream/miku-readfile/src/validation.ts
-  workplace/upstream/miku-readfile/src/validate-encoding.ts
-  workplace/upstream/miku-readfile/src/validate-file.ts
-  workplace/upstream/miku-readfile/src/validate-limits.ts
-  workplace/upstream/miku-readfile/src/validation-common.ts
 
 java classes:
   jp.igapyon.mikureadfile.core.RequestValidator
@@ -55,8 +51,53 @@ java classes:
 
 notes:
   - Converts request JSON into EffectiveRequest.
-  - Unknown fields, default values, limits, paths, and validation diagnostics
-    should match upstream.
+  - Coordinates encoding, limits, and file-entry validators.
+```
+
+```text
+upstream file:
+  workplace/upstream/miku-readfile/src/validation-common.ts
+
+java classes:
+  jp.igapyon.mikureadfile.core.ValidationCommon
+
+notes:
+  - Holds common unknown-field, integer, encoding, and validation failure
+    helpers.
+```
+
+```text
+upstream file:
+  workplace/upstream/miku-readfile/src/validate-encoding.ts
+
+java classes:
+  jp.igapyon.mikureadfile.core.EncodingValidator
+
+notes:
+  - Validates default encoding and extension-specific encoding overrides.
+```
+
+```text
+upstream file:
+  workplace/upstream/miku-readfile/src/validate-file.ts
+
+java classes:
+  jp.igapyon.mikureadfile.core.FileValidator
+
+notes:
+  - Validates string and object file entries, relative paths, ranges, and
+    per-file encoding overrides.
+```
+
+```text
+upstream file:
+  workplace/upstream/miku-readfile/src/validate-limits.ts
+
+java classes:
+  jp.igapyon.mikureadfile.core.LimitsValidator
+
+notes:
+  - Validates max file bytes, file count, and total bytes limits.
 ```
 
 ```text
@@ -66,30 +107,73 @@ upstream file:
 
 java classes:
   jp.igapyon.mikureadfile.core.PathSecurity
-  jp.igapyon.mikureadfile.core.MikuReadfile
+  jp.igapyon.mikureadfile.core.Root
 
 notes:
   - Covers root-boundary checks and root-too-broad policy.
-  - Java root handling is implemented inside the core facade for now.
 ```
 
 ```text
 upstream file:
   workplace/upstream/miku-readfile/src/readfile.ts
-  workplace/upstream/miku-readfile/src/file-reader.ts
-  workplace/upstream/miku-readfile/src/file-result.ts
-  workplace/upstream/miku-readfile/src/diagnostics.ts
-  workplace/upstream/miku-readfile/src/result.ts
 
 java classes:
   jp.igapyon.mikureadfile.core.MikuReadfile
-  jp.igapyon.mikureadfile.core.ResultFactory
-  jp.igapyon.mikureadfile.model.Diagnostic
 
 notes:
   - Core API is `MikuReadfile.runRequest(JsonNode, Path)`.
-  - File IO remains at the core runtime boundary and CLI only handles stdin /
-    stdout / stderr.
+  - The facade coordinates validation, root checks, per-file reads, and final
+    result aggregation.
+```
+
+```text
+upstream file:
+  workplace/upstream/miku-readfile/src/file-reader.ts
+
+java classes:
+  jp.igapyon.mikureadfile.core.FileReader
+
+notes:
+  - Handles file path resolution, symlink / boundary checks, binary skipping,
+    byte reading, and decode invocation.
+```
+
+```text
+upstream file:
+  workplace/upstream/miku-readfile/src/file-result.ts
+
+java classes:
+  jp.igapyon.mikureadfile.core.FileResultFactory
+
+notes:
+  - Creates file result JSON model fields from decoded text and metadata.
+```
+
+```text
+upstream file:
+  workplace/upstream/miku-readfile/src/diagnostics.ts
+
+java classes:
+  jp.igapyon.mikureadfile.core.Diagnostics
+  jp.igapyon.mikureadfile.model.Diagnostic
+
+notes:
+  - `Diagnostic` is the JSON model.
+  - `Diagnostics` creates root, file, validation, and total-byte diagnostics.
+```
+
+```text
+upstream file:
+  workplace/upstream/miku-readfile/src/result.ts
+
+java classes:
+  jp.igapyon.mikureadfile.core.ResultFactory
+  jp.igapyon.mikureadfile.model.MikuReadfileResult
+  jp.igapyon.mikureadfile.model.Summary
+
+notes:
+  - Creates summaries, validation failure results, and final aggregated
+    results outside the CLI boundary.
 ```
 
 ```text
@@ -101,6 +185,8 @@ java classes:
 
 notes:
   - Supports `utf-8` and `shift_jis`.
+  - Extension selection follows Node `path.posix.extname` behavior for
+    leading-dot filenames.
   - Decoder differences between iconv-lite and Java Charset should be treated
     as runtime differences if found.
 ```
@@ -108,17 +194,48 @@ notes:
 ```text
 upstream file:
   workplace/upstream/miku-readfile/src/text-shape.ts
-  workplace/upstream/miku-readfile/src/line-endings.ts
-  workplace/upstream/miku-readfile/src/logical-lines.ts
-  workplace/upstream/miku-readfile/src/range-text.ts
 
 java classes:
   jp.igapyon.mikureadfile.core.TextShape
+
+notes:
+  - Builds normalized text shape, BOM metadata, line ending metadata, and
+    logical line metadata by coordinating line-ending and logical-line helpers.
+```
+
+```text
+upstream file:
+  workplace/upstream/miku-readfile/src/line-endings.ts
+
+java classes:
+  jp.igapyon.mikureadfile.core.LineEndings
+
+notes:
+  - Normalizes line endings, collects raw line ending kinds, and classifies the
+    line ending summary value.
+```
+
+```text
+upstream file:
+  workplace/upstream/miku-readfile/src/logical-lines.ts
+
+java classes:
+  jp.igapyon.mikureadfile.core.LogicalLines
+
+notes:
+  - Splits raw decoded text into logical lines and records whether each line
+    originally had an ending.
+```
+
+```text
+upstream file:
+  workplace/upstream/miku-readfile/src/range-text.ts
+
+java classes:
   jp.igapyon.mikureadfile.core.RangeText
 
 notes:
-  - Covers LF normalization, BOM metadata, final newline, line ending
-    classification, logical line count, and range text extraction.
+  - Extracts normalized range text from TextShape logical line metadata.
 ```
 
 ```text

@@ -29,6 +29,60 @@ java -jar target/miku-readfile.jar --version
 java -jar target/miku-readfile.jar --help
 ```
 
+Minimal `request.json`:
+
+```json
+{
+  "version": 1,
+  "root": ".",
+  "files": ["README.md"]
+}
+```
+
+Range read example:
+
+```json
+{
+  "version": 1,
+  "root": ".",
+  "files": [
+    {
+      "path": "src/main/java/jp/igapyon/mikureadfile/core/MikuReadfile.java",
+      "range": {
+        "startLine": 1,
+        "lineCount": 40
+      }
+    }
+  ]
+}
+```
+
+Encoding rule example:
+
+```json
+{
+  "version": 1,
+  "root": ".",
+  "files": [
+    "README.md",
+    {
+      "path": "docs/legacy-memo.txt",
+      "encoding": "shift_jis"
+    }
+  ],
+  "encoding": {
+    "default": "utf-8",
+    "extensions": {
+      ".java": "shift_jis"
+    }
+  }
+}
+```
+
+Files must be root-relative paths using `/`. Absolute paths and `..` path
+segments are validation errors. Directories, symlinks, binary files, decode
+errors, and oversized files are skipped with diagnostics.
+
 ## Upstream
 
 - Upstream Node.js / TypeScript project:
@@ -44,12 +98,28 @@ java -jar target/miku-readfile.jar --help
 
 - `target/miku-readfile.jar`
 - `target/miku-readfile-sources.jar`
-- `target/miku-readfile-0.5.0-SNAPSHOT-dist.zip`
+- `target/miku-readfile-0.5.0-dist.zip`
 
 ## Development Documents
 
 - `docs/miku-readfile-cli-spec.md`
+- `docs/cli-json-parity.md`
+- `docs/parity-golden/`
 - `docs/upstream-class-mapping.md`
 - `docs/upstream-test-mapping.md`
 - `docs/upstream-followup-log.md`
 - `docs/remaining-migration-items.md`
+
+## Verification
+
+Focused checks:
+
+```bash
+mvn test
+mvn clean package
+node scripts/smoke-jar.mjs
+node scripts/parity-check.mjs
+```
+
+`node scripts/parity-check.mjs` compares the Java CLI against the upstream Node
+CLI and checked-in normalized golden files under `docs/parity-golden/`.

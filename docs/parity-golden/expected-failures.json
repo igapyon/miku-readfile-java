@@ -1,0 +1,49 @@
+{
+  "name": "expected-failures",
+  "intent": "returns file-level diagnostics for missing, binary, decode, and directory failures",
+  "expected": {
+    "status": 1,
+    "stdout": {
+      "version": 1,
+      "ok": false,
+      "files": [],
+      "summary": {
+        "requestedFiles": 4,
+        "filesRead": 0,
+        "filesSkipped": 4,
+        "diagnostics": 4
+      },
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "file_not_readable",
+          "message": "file could not be read",
+          "file": "missing.txt",
+          "skipped": true
+        },
+        {
+          "severity": "error",
+          "code": "binary_file_skipped",
+          "message": "binary file was skipped",
+          "file": "binary.dat",
+          "skipped": true
+        },
+        {
+          "severity": "error",
+          "code": "decode_error",
+          "message": "file could not be decoded",
+          "file": "broken.txt",
+          "skipped": true
+        },
+        {
+          "severity": "error",
+          "code": "not_file",
+          "message": "path is not a regular file",
+          "file": "src",
+          "skipped": true
+        }
+      ]
+    },
+    "stderr": ""
+  }
+}

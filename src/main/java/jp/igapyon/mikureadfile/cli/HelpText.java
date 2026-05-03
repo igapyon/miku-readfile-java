@@ -58,6 +58,10 @@ public final class HelpText {
                 + "  0  ok: true\n"
                 + "  1  ok: false expected failure\n"
                 + "  2  malformed stdin or invalid CLI usage\n"
-                + "  3  unexpected runtime error\n";
+                + "  3  unexpected runtime error\n"
+                + "\n"
+                + "Documents:\n"
+                + "  docs/miku-readfile-cli-spec.md\n"
+                + "  docs/cli-json-parity.md\n";
     }
 }

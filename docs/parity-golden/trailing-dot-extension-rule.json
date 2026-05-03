@@ -1,0 +1,33 @@
+{
+  "name": "trailing-dot-extension-rule",
+  "intent": "treats a trailing dot as the dot extension",
+  "expected": {
+    "status": 0,
+    "stdout": {
+      "version": 1,
+      "ok": true,
+      "files": [
+        {
+          "file": "trailing.",
+          "encoding": "shift_jis",
+          "bom": null,
+          "lineEnding": "lf",
+          "finalNewline": true,
+          "bytes": 5,
+          "lines": 1,
+          "modifiedTime": "<modifiedTime>",
+          "range": null,
+          "text": "メモ\n"
+        }
+      ],
+      "summary": {
+        "requestedFiles": 1,
+        "filesRead": 1,
+        "filesSkipped": 0,
+        "diagnostics": 0
+      },
+      "diagnostics": []
+    },
+    "stderr": ""
+  }
+}

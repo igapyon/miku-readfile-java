@@ -1,0 +1,27 @@
+{
+  "name": "root-too-broad-filesystem",
+  "intent": "rejects filesystem root as too broad",
+  "expected": {
+    "status": 1,
+    "stdout": {
+      "version": 1,
+      "ok": false,
+      "files": [],
+      "summary": {
+        "requestedFiles": 1,
+        "filesRead": 0,
+        "filesSkipped": 1,
+        "diagnostics": 1
+      },
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "root_too_broad",
+          "message": "root is too broad",
+          "path": "/"
+        }
+      ]
+    },
+    "stderr": ""
+  }
+}

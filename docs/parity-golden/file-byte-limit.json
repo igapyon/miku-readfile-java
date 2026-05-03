@@ -1,0 +1,32 @@
+{
+  "name": "file-byte-limit",
+  "intent": "enforces per-file maxFileBytes",
+  "expected": {
+    "status": 1,
+    "stdout": {
+      "version": 1,
+      "ok": false,
+      "files": [],
+      "summary": {
+        "requestedFiles": 1,
+        "filesRead": 0,
+        "filesSkipped": 1,
+        "diagnostics": 1
+      },
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "max_file_bytes_exceeded",
+          "message": "file exceeded maxFileBytes and was skipped",
+          "file": "small-a.txt",
+          "skipped": true,
+          "details": {
+            "size": 3,
+            "maxFileBytes": 2
+          }
+        }
+      ]
+    },
+    "stderr": ""
+  }
+}

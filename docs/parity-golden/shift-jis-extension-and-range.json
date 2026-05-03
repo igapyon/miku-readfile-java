@@ -1,0 +1,50 @@
+{
+  "name": "shift-jis-extension-and-range",
+  "intent": "uses extension encoding rules and returns range metadata",
+  "expected": {
+    "status": 0,
+    "stdout": {
+      "version": 1,
+      "ok": true,
+      "files": [
+        {
+          "file": "src/Legacy.java",
+          "encoding": "shift_jis",
+          "bom": null,
+          "lineEnding": "lf",
+          "finalNewline": true,
+          "bytes": 11,
+          "lines": 1,
+          "modifiedTime": "<modifiedTime>",
+          "range": null,
+          "text": "こんにちは\n"
+        },
+        {
+          "file": "notes-crlf.txt",
+          "encoding": "utf-8",
+          "bom": null,
+          "lineEnding": "crlf",
+          "finalNewline": true,
+          "bytes": 9,
+          "lines": 3,
+          "modifiedTime": "<modifiedTime>",
+          "range": {
+            "startLine": 2,
+            "lineCount": 2,
+            "endLine": 3,
+            "eof": true
+          },
+          "text": "b\nc\n"
+        }
+      ],
+      "summary": {
+        "requestedFiles": 2,
+        "filesRead": 2,
+        "filesSkipped": 0,
+        "diagnostics": 0
+      },
+      "diagnostics": []
+    },
+    "stderr": ""
+  }
+}

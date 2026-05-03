@@ -1,0 +1,28 @@
+{
+  "name": "dotfile-extension-rule",
+  "intent": "does not treat a leading-dot filename as an extension match",
+  "expected": {
+    "status": 1,
+    "stdout": {
+      "version": 1,
+      "ok": false,
+      "files": [],
+      "summary": {
+        "requestedFiles": 1,
+        "filesRead": 0,
+        "filesSkipped": 1,
+        "diagnostics": 1
+      },
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "decode_error",
+          "message": "file could not be decoded",
+          "file": ".env",
+          "skipped": true
+        }
+      ]
+    },
+    "stderr": ""
+  }
+}

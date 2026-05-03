@@ -74,6 +74,6 @@ public final class MikuReadfileCli {
     private static String packageVersion() {
         Package pkg = MikuReadfileCli.class.getPackage();
         String version = pkg == null ? null : pkg.getImplementationVersion();
-        return version == null ? "0.5.0-SNAPSHOT" : version;
+        return version == null ? "0.5.0" : version;
     }
 }
