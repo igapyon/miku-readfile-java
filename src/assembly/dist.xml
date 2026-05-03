@@ -33,5 +33,9 @@
       <source>docs/cli-json-parity.md</source>
       <outputDirectory>/docs</outputDirectory>
     </file>
+    <file>
+      <source>docs/upstream-doc-sync.md</source>
+      <outputDirectory>/docs</outputDirectory>
+    </file>
   </files>
 </assembly>

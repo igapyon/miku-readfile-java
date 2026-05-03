@@ -16,14 +16,19 @@
 - Release version policy is fixed.
   - Current Java version is `0.5.0`.
   - Upstream Node version is `0.5.0`.
+- Strengthen CLI docs synchronization.
+  - Java `docs/miku-readfile-cli-spec.md` has been expanded; keep it synchronized with future upstream changes.
+  - `docs/upstream-doc-sync.md` records shared upstream sections and intentional Java-specific differences.
+  - Keep `README.md`, CLI help, and tests aligned.
+- Expand README with more examples.
+- Add GitHub release workflow for CLI runtime assets.
+  - Runtime jar, sources jar, and distribution zip are attached to release tags.
+  - Release tag versions must match `pom.xml` version or use a dot-suffix.
 
 ## Next
 
-- Strengthen CLI docs synchronization.
-  - Compare upstream `workplace/upstream/miku-readfile/docs/miku-readfile-cli-spec.md`.
-  - Java `docs/miku-readfile-cli-spec.md` has been expanded; keep it synchronized with future upstream changes.
-  - Keep `README.md`, CLI help, and tests aligned.
-- Expand README with more examples.
+- Monitor upstream Node.js `miku-readfile` changes and refresh Java parity
+  fixtures, golden files, and docs when the upstream contract changes.
 
 ## Current Passing Checks
 
