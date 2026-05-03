@@ -425,6 +425,42 @@ follow-up:
       Refresh golden files only when an upstream contract change is intentional.
 ```
 
+## Upstream Documentation Synchronization
+
+```text
+upstream file:
+  workplace/upstream/miku-readfile/docs/miku-readfile-cli-spec.md
+
+java files:
+  README.md
+  docs/miku-readfile-cli-spec.md
+  docs/cli-json-parity.md
+  docs/upstream-doc-sync.md
+  src/main/java/jp/igapyon/mikureadfile/cli/HelpText.java
+  src/test/java/jp/igapyon/mikureadfile/docs/DocumentationSyncTest.java
+
+diff summary:
+  behavior differences:
+    - none
+  naming differences:
+    - Java examples use `java -jar target/miku-readfile.jar`.
+  unported differences:
+    - upstream `Bundle Artifacts` is represented as Java runtime artifacts.
+  Java-side original extensions:
+    - `docs/upstream-doc-sync.md` records shared sections and intentional
+      Java-specific documentation differences.
+
+follow-up:
+  - checks performed:
+      rg "^## " workplace/upstream/miku-readfile/docs/miku-readfile-cli-spec.md
+      rg "^## " docs/miku-readfile-cli-spec.md
+  - fixture:
+      upstream and Java CLI specification documents
+  - next check viewpoint:
+      Update Java CLI docs, README, help text, and DocumentationSyncTest when
+      upstream CLI documentation changes.
+```
+
 ## Core Responsibility Refactoring
 
 ```text

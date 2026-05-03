@@ -16,14 +16,18 @@ class DocumentationSyncTest {
         String readme = read("README.md");
         String spec = read("docs/miku-readfile-cli-spec.md");
         String parity = read("docs/cli-json-parity.md");
+        String docSync = read("docs/upstream-doc-sync.md");
         String help = HelpText.helpText();
 
         assertTrue(readme.contains("docs/miku-readfile-cli-spec.md"));
         assertTrue(readme.contains("docs/cli-json-parity.md"));
         assertTrue(readme.contains("docs/parity-golden/"));
+        assertTrue(readme.contains("docs/upstream-doc-sync.md"));
         assertTrue(readme.contains("java -jar target/miku-readfile.jar < request.json > result.json"));
         assertTrue(readme.contains("target/miku-readfile.jar"));
         assertTrue(readme.contains("node scripts/parity-check.mjs"));
+        assertTrue(readme.contains(".github/workflows/release-cli-runtime.yml"));
+        assertTrue(readme.contains("miku-readfile-<version>-dist.zip"));
 
         assertTrue(spec.contains("java -jar target/miku-readfile.jar < request.json > result.json"));
         assertTrue(spec.contains("Request Validation"));
@@ -39,6 +43,11 @@ class DocumentationSyncTest {
         assertTrue(parity.contains("docs/parity-golden/"));
         assertTrue(parity.contains("java -jar target/miku-readfile.jar --help"));
         assertTrue(parity.contains("Shift_JIS decoder behavior"));
+
+        assertTrue(docSync.contains("workplace/upstream/miku-readfile/docs/miku-readfile-cli-spec.md"));
+        assertTrue(docSync.contains("Java Runtime Artifacts"));
+        assertTrue(docSync.contains("Parity Verification"));
+        assertTrue(docSync.contains("DocumentationSyncTest"));
 
         assertTrue(help.contains("miku-readfile"));
         assertTrue(help.contains("Usage:"));
@@ -57,6 +66,7 @@ class DocumentationSyncTest {
         assertTrue(assembly.contains("<source>LICENSE</source>"));
         assertTrue(assembly.contains("<source>docs/miku-readfile-cli-spec.md</source>"));
         assertTrue(assembly.contains("<source>docs/cli-json-parity.md</source>"));
+        assertTrue(assembly.contains("<source>docs/upstream-doc-sync.md</source>"));
     }
 
     private static String read(String path) throws Exception {

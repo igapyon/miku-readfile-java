@@ -27,6 +27,9 @@ Initial Java runtime skeleton and MVP behavior are implemented.
 - checked-in normalized parity golden files under docs/parity-golden
 - parity script refactored into case definition, execution, output writing, and
   normalization units
+- upstream documentation synchronization notes under docs/upstream-doc-sync.md
+- GitHub release workflow for CLI runtime jar, sources jar, and distribution
+  zip assets
 - core runtime responsibilities split into Root, FileReader, and
   FileResultFactory to improve upstream file traceability
 - validation responsibilities split into ValidationCommon, EncodingValidator,
@@ -56,7 +59,8 @@ Latest passing result:
 
 ## Pending
 
-- Continue synchronizing README, CLI help, and CLI spec when upstream changes.
+- Monitor upstream changes and refresh Java parity fixtures, golden files, and
+  docs when the upstream contract changes.
 
 ## Focused Regression List
 

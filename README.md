@@ -100,11 +100,24 @@ errors, and oversized files are skipped with diagnostics.
 - `target/miku-readfile-sources.jar`
 - `target/miku-readfile-0.5.0-dist.zip`
 
+GitHub Release publishing is handled by
+`.github/workflows/release-cli-runtime.yml`. Release tags must start with `v`.
+For example, tag `v0.5.0` publishes assets using version `0.5.0`; a dot-suffix
+tag such as `v0.5.0.1` is also accepted for rebuilding assets from the same
+`pom.xml` version.
+
+Release assets:
+
+- `miku-readfile-<version>.jar`
+- `miku-readfile-sources-<version>.jar`
+- `miku-readfile-<version>-dist.zip`
+
 ## Development Documents
 
 - `docs/miku-readfile-cli-spec.md`
 - `docs/cli-json-parity.md`
 - `docs/parity-golden/`
+- `docs/upstream-doc-sync.md`
 - `docs/upstream-class-mapping.md`
 - `docs/upstream-test-mapping.md`
 - `docs/upstream-followup-log.md`
